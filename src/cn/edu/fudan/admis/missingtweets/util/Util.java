@@ -1,6 +1,7 @@
-package util;
+package cn.edu.fudan.admis.missingtweets.util;
 
-public class Util {
+public class Util
+{
 	private Util()
 	{
 		throw new AssertionError();
