@@ -18,7 +18,6 @@ public class RWR
 	public RWR(int[][] matrix, int dimension, double[] initialVector,
 			double alpha)
 	{
-		// TODO Auto-generated constructor stub
 		transitiveMatrix = new int[dimension][dimension];
 		for (int i = 0; i < dimension; i++)
 			for (int j = 0; j < dimension; j++)
@@ -111,7 +110,6 @@ public class RWR
 		boolean judge = true;
 		for (int i = 0; i < dimension; i++)
 		{
-
 			if (Matrix[i] == nextMatrix[i])
 			{
 				continue;
@@ -123,5 +121,4 @@ public class RWR
 		}
 		return judge;
 	}
-
 }
