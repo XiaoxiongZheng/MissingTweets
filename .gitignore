@@ -1,3 +1,6 @@
 /bin
 /build/
 /log
+*statistics.txt
+/.idea/
+*.xml
