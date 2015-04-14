@@ -17,6 +17,14 @@ public class StopWords {
 	{
 		stop_words.add(s.toLowerCase());
 	}
+
+    public static boolean isStopWords(String word)
+    {
+        if (stop_words.contains(word))
+            return true;
+        return false;
+    }
+
 	public static void addWords(){
 		add("a");
 	    add("able");
@@ -29,16 +37,11 @@ public class StopWords {
 	    add("after");
 	    add("afterwards");
 	    add("again");
-//	    add("against");
 	    add("all");
-//	    add("allow");
-//	    add("allows");
-//	    add("almost");
 	    add("alone");
 	    add("along");
 	    add("already");
 	    add("also");
-//	    add("although");
 	    add("always");
 	    add("am");
 	    add("among");
@@ -56,7 +59,6 @@ public class StopWords {
 	    add("anywhere");
 	    add("apart");
 	    add("appear");
-//	    add("appreciate");
 	    add("appropriate");
 	    add("are");
 	    add("around");
@@ -68,7 +70,6 @@ public class StopWords {
 	    add("at");
 	    add("available");
 	    add("away");
-//	    add("awfully");
 	    add("b");
 	    add("be");
 	    add("became");
@@ -85,8 +86,6 @@ public class StopWords {
 	    add("below");
 	    add("beside");
 	    add("besides");
-//	    add("best");
-//	    add("better");
 	    add("between");
 	    add("beyond");
 	    add("both");
@@ -176,11 +175,9 @@ public class StopWords {
 	    add("gone");
 	    add("got");
 	    add("gotten");
-//	    add("greetings");
 	    add("h");
 	    add("had");
 	    add("happens");
-//	    add("hardly");
 	    add("has");
 	    add("have");
 	    add("having");
@@ -201,14 +198,12 @@ public class StopWords {
 	    add("himself");
 	    add("his");
 	    add("hither");
-//	    add("hopefully");
 	    add("how");
 	    add("howbeit");
 	    add("however");
 	    add("i");
 	    add("ie");
 	    add("if");
-//	    add("ignored");
 	    add("immediate");
 	    add("in");
 	    add("inasmuch");
@@ -232,9 +227,6 @@ public class StopWords {
 	    add("keep");
 	    add("keeps");
 	    add("kept");
-//	    add("know");
-//	    add("knows");
-//	    add("known");
 	    add("l");
 	    add("last");
 	    add("lately");
@@ -260,9 +252,7 @@ public class StopWords {
 	    add("may");
 	    add("maybe");
 	    add("me");
-//	    add("mean");
 	    add("meanwhile");
-//	    add("merely");
 	    add("might");
 	    add("more");
 	    add("moreover");
@@ -281,14 +271,10 @@ public class StopWords {
 	    add("necessary");
 	    add("need");
 	    add("needs");
-//	    add("neither");
-//	    add("never");
-//	    add("nevertheless");
 	    add("new");
 	    add("next");
 	    add("nine");
 	    add("normally");
-//	    add("novel");
 	    add("no");
 	    add("nobody");
 	    add("non");
@@ -312,7 +298,6 @@ public class StopWords {
 	    add("oh");
 	    add("ok");
 	    add("okay");
-//	    add("old");
 	    add("on");
 	    add("once");
 	    add("one");
@@ -371,17 +356,11 @@ public class StopWords {
 	    add("secondly");
 	    add("see");
 	    add("seeing");
-//	    add("seem");
-//	    add("seemed");
-//	    add("seeming");
-//	    add("seems");
 	    add("seen");
 	    add("self");
 	    add("selves");
 	    add("sensible");
 	    add("sent");
-	   // add("serious");
-	   // add("seriously");
 	    add("seven");
 	    add("several");
 	    add("shall");
@@ -416,9 +395,6 @@ public class StopWords {
 	    add("tends");
 	    add("th");
 	    add("than");
-//	    add("thank");
-//	    add("thanks");
-//	    add("thanx");
 	    add("that");
 	    add("thats");
 	    add("the");
@@ -465,17 +441,13 @@ public class StopWords {
 	    add("u");
 	    add("un");
 	    add("under");
-//	    add("unfortunately");
-//	    add("unless");
-//	    add("unlikely");
-	    add("until");
+        add("until");
 	    add("unto");
 	    add("up");
 	    add("upon");
 	    add("us");
 	    add("use");
 	    add("used");
-//	    add("useful");
 	    add("uses");
 	    add("using");
 	    add("usually");
@@ -492,14 +464,10 @@ public class StopWords {
 	    add("want");
 	    add("wants");
 	    add("was");
-//	    add("way");
 	    add("we");
-//	    add("welcome");
-//	    add("well");
 	    add("went");
 	    add("were");
 	    add("what");
-//	    add("whatever");
 	    add("when");
 	    add("whence");
 	    add("whenever");
