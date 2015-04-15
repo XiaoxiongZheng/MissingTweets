@@ -30,6 +30,7 @@ public class Documents {
      * read docs
      * @throws IOException
      */
+
     public void readDocs() throws IOException {
         File dir = new File(Config.dirPath);
         // todo if dir is null, how to handle
@@ -42,9 +43,9 @@ public class Documents {
     }
 
     public static class Document{
+
         private String filename;
         int[] docWords;
-
         public Document(String name){
             filename = name;
         }
@@ -79,5 +80,22 @@ public class Documents {
             }
             words.clear();
         }
+
+    }
+
+    public ArrayList<Document> getDocs() {
+        return docs;
+    }
+
+    public Map<String, Integer> getTermToIndexMap() {
+        return termToIndexMap;
+    }
+
+    public ArrayList<String> getIndexToTermMap() {
+        return indexToTermMap;
+    }
+
+    public Map<String, Integer> getTermCountMap() {
+        return termCountMap;
     }
 }

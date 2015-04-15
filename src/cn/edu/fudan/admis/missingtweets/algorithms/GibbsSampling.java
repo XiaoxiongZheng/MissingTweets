@@ -8,11 +8,6 @@ import java.util.List;
  * Created by zhengxx012 on 2015/3/14.
  */
 public class GibbsSampling {
-    private int k;
-    private List<HashMap<String, Integer>> corpus;
-
-    GibbsSampling()
-    {
-        corpus = new ArrayList<>();
-    }
+    public static void main(String[] args)
+    {}
 }

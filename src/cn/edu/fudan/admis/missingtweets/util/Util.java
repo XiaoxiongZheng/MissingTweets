@@ -1,8 +1,6 @@
 package cn.edu.fudan.admis.missingtweets.util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Util
@@ -18,9 +16,9 @@ public class Util
      * @param lines is an ArrayList
      * @throws IOException
      */
-    public static void readFile(String path, ArrayList<String> lines) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(""));
+    public static void readFile(String path, ArrayList<String> lines){
         try {
+            BufferedReader br = new BufferedReader(new FileReader(path));
             String line;
             while ((line = br.readLine()) != null)
             {
@@ -32,6 +30,17 @@ public class Util
             e.printStackTrace();
         }
 
+    }
+
+    public static void writeFile(String path, ArrayList<String> lines)
+    {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+            for (String line : lines)
+                bw.write(line + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
