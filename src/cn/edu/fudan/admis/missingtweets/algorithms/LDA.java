@@ -19,18 +19,21 @@ public class LDA {
     private int[][] z;                                      //topic label array
     private int[][] docTopic;                               //given document m, count times of topic k, docNum * topicNum
     private int[][] topicTerm;                              //given topic k, count times of term t, topicNum * termNum
-    private int[] docTopicSum;                            //sum for each row in docTopic
-    private int[] topicTermSum;                           //sum for each row in topicTerm
+    private int[] docTopicSum;                              //sum for each row in docTopic
+    private int[] topicTermSum;                             //sum for each row in topicTerm
     private double[][] phi;                                 //parameters for topic-word distribution, topicNum * termNum
     private double[][] theta;                               //parameters for doc-topic distribution, docNum * topicNum
-    private double alpha;
-    private double beta;
-    private int topicNum;
-    private int saveStep;
-    private int iterations;
+    private double alpha;                                   //hype-parameters for docs' prior distribution
+    private double beta;                                    //hype-parameters for topics' prior distribution
+    private int topicNum;                                   //topics' number
+    private int saveStep;                                   //save steps
+    private int iterations;                                 //iterations
     private int beginSaveIters;
 
-
+    /**
+     * default constructor
+     * get initial config arguments
+     */
     public LDA()
     {
         alpha = Config.alpha;
@@ -41,7 +44,11 @@ public class LDA {
         beginSaveIters = Config.beginSaveIters;
     }
 
-    public void initalMode(Documents docs)
+    /**
+     * initial LDA Model parameters
+     * @param docs is corpus
+     */
+    public void initalModel(Documents docs)
     {
         docNum = docs.getDocs().size();
         termNum = docs.getTermToIndexMap().size();
@@ -79,7 +86,12 @@ public class LDA {
         }
     }
 
-    public void inferenceMode(Documents docs){
+    /**
+     *
+     * @param docs is a corpus
+     * @throws IOException
+     */
+    public void inferenceModel(Documents docs) throws IOException {
         if (iterations < saveStep + beginSaveIters)
         {
             System.out.println("Error: the number of iterations should bi larger than " + (saveStep + beginSaveIters));
@@ -93,6 +105,17 @@ public class LDA {
             {
                 System.out.println("Saving model at iteration " + i + " ... ");
                 updateEstimatedParameters();
+                saveIterateModel(i, docs);
+            }
+
+            for (int m = 0; m < docNum; m++)
+            {
+                int docTermsNum = docs.getDocs().get(i).docWords.length;
+                for (int n = 0; n < docTermsNum; n++)
+                {
+                    int newTopic = sampleTopic(m, n);
+                    z[m][n] = newTopic;
+                }
             }
         }
     }
@@ -113,6 +136,31 @@ public class LDA {
                 theta[i][j] = (docTopic[i][j] + alpha) / (topicTermSum[i] + alpha);
             }
         }
+    }
+
+    private int sampleTopic(int m, int n)
+    {
+        int currTopic = z[m][n];
+        docTopic[m][currTopic]--;
+        topicTerm[currTopic][doc[m][n]]--;
+        docTopicSum[m]--;
+        topicTermSum[currTopic]--;
+
+        double[] p = new double[topicNum];
+        for (int k = 1; k < topicNum; k++)
+            p[k] += p[k - 1];
+
+        double u = Math.random() * p[topicNum - 1];
+        int newTopic;
+        for (newTopic = 0; newTopic < topicNum; newTopic++)
+            if (u < p[newTopic])
+                break;
+
+        docTopic[m][newTopic]++;
+        topicTerm[newTopic][doc[m][n]]++;
+        docTopicSum[m]++;
+        topicTermSum[newTopic]++;
+        return newTopic;
     }
 
     public void saveIterateModel(int iters, Documents docs) throws IOException {
@@ -188,8 +236,6 @@ public class LDA {
             else if (sortPro[o1] < sortPro[o2]) return 1;
             else return 0;
         }
-
-
     }
 
 }

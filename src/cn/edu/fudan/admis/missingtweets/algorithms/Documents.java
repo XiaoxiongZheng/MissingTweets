@@ -14,8 +14,8 @@ import java.util.Map;
  * Created by zhengxx on 15/4/14.
  */
 public class Documents {
-    private ArrayList<Document> docs;
-    private Map<String, Integer> termToIndexMap;
+    private ArrayList<Document> docs;                                               // corpus
+    private Map<String, Integer> termToIndexMap;                                    //
     private ArrayList<String> indexToTermMap;
     private Map<String, Integer> termCountMap;
 
