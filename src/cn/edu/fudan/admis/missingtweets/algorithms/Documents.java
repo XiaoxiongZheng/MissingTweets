@@ -15,9 +15,10 @@ import java.util.Map;
  */
 public class Documents {
     private ArrayList<Document> docs;                                               // corpus
-    private Map<String, Integer> termToIndexMap;                                    //
-    private ArrayList<String> indexToTermMap;
-    private Map<String, Integer> termCountMap;
+    // todo termToIndexMap is only calculate how many different term in the corpus
+    private Map<String, Integer> termToIndexMap;                                    // every term map to the document
+    private ArrayList<String> indexToTermMap;                                       // the first time which term appeared
+    private Map<String, Integer> termCountMap;                                      // every term's number
 
     Documents(){
         docs = new ArrayList<>();
@@ -37,7 +38,7 @@ public class Documents {
         for (File docFile : dir.listFiles())
         {
             Document doc = new Document(docFile.getAbsolutePath());
-            doc.readDoc(docs, termToIndexMap, indexToTermMap, termCountMap);
+            doc.readDoc(termToIndexMap, indexToTermMap, termCountMap);
             docs.add(doc);
         }
     }
@@ -54,7 +55,7 @@ public class Documents {
          * read documents
          * @throws IOException
          */
-        public void readDoc(ArrayList<Document> docs, Map<String, Integer> termToIndexMap, ArrayList<String> indexToTermMap, Map<String, Integer> termCountMap) throws IOException {
+        public void readDoc(Map<String, Integer> termToIndexMap, ArrayList<String> indexToTermMap, Map<String, Integer> termCountMap) throws IOException {
             ArrayList<String> lines = new ArrayList<>();
             ArrayList<String> words = new ArrayList<>();
             Util.readFile(filename, lines);

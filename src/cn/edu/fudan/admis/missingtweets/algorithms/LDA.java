@@ -48,7 +48,7 @@ public class LDA {
      * initial LDA Model parameters
      * @param docs is corpus
      */
-    public void initalModel(Documents docs)
+    public void initialModel(Documents docs)
     {
         docNum = docs.getDocs().size();
         termNum = docs.getTermToIndexMap().size();
@@ -110,7 +110,7 @@ public class LDA {
 
             for (int m = 0; m < docNum; m++)
             {
-                int docTermsNum = docs.getDocs().get(i).docWords.length;
+                int docTermsNum = docs.getDocs().get(m).docWords.length;
                 for (int n = 0; n < docTermsNum; n++)
                 {
                     int newTopic = sampleTopic(m, n);

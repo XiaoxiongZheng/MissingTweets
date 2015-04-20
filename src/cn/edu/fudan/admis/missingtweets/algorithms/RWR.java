@@ -1,5 +1,6 @@
 package cn.edu.fudan.admis.missingtweets.algorithms;
 
+// todo need to be refactored
 public class RWR
 {
 	private int[][] transitiveMatrix;

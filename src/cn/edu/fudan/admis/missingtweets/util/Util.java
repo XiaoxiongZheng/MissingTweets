@@ -11,10 +11,9 @@ public class Util
 	}
 
     /**
-     * read file
+     * read file to an ArrayList
      * @param path is the file's path
      * @param lines is an ArrayList
-     * @throws IOException
      */
     public static void readFile(String path, ArrayList<String> lines){
         try {
@@ -32,6 +31,11 @@ public class Util
 
     }
 
+    /**
+     * write to a file from an ArrayList
+     * @param path is file's path
+     * @param lines is an ArrayList
+     */
     public static void writeFile(String path, ArrayList<String> lines)
     {
         try {
