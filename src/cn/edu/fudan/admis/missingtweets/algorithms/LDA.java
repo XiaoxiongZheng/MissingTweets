@@ -94,7 +94,7 @@ public class LDA {
     public void inferenceModel(Documents docs) throws IOException {
         if (iterations < saveStep + beginSaveIters)
         {
-            System.out.println("Error: the number of iterations should bi larger than " + (saveStep + beginSaveIters));
+            System.out.println("Error: the number of iterations should be larger than " + (saveStep + beginSaveIters));
             System.exit(0);
         }
 
@@ -206,26 +206,27 @@ public class LDA {
         bw.close();
 
         // todo
-        bw = new BufferedWriter(new FileWriter(prefixName + ".twords"));
+        // output top words in every topic
+        bw = new BufferedWriter(new FileWriter(prefixName + ".top"));
         for (int i = 0; i < topicNum; i++)
         {
-            List<Integer> tWordsIndexArray = new ArrayList<>();
+            List<Integer> topWordsIndexArray = new ArrayList<>();
             for (int j = 0; j < termNum; j++)
-                tWordsIndexArray.add(j);
-            Collections.sort(tWordsIndexArray, new LDA.TwordsComparable(phi[i]));
+                topWordsIndexArray.add(j);
+            Collections.sort(topWordsIndexArray, new LDA.topWordsComparable(phi[i]));
             bw.write("topic: " + i + "\n");
             for (int j = 0; j < Config.topNum; j++)
-                bw.write(docs.getIndexToTermMap().get(tWordsIndexArray.get(j)) + " " + phi[i][tWordsIndexArray.get(j)] + "\t");
+                bw.write(docs.getIndexToTermMap().get(topWordsIndexArray.get(j)) + " " + phi[i][topWordsIndexArray.get(j)] + "\t");
             bw.write("\n");
         }
         bw.close();
     }
 
-    public class TwordsComparable implements Comparator<Integer>
+    public class topWordsComparable implements Comparator<Integer>
     {
         private double[] sortPro;
 
-        public TwordsComparable(double[] sortPro)
+        public topWordsComparable(double[] sortPro)
         {
             this.sortPro = sortPro;
         }

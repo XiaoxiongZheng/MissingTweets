@@ -14,7 +14,7 @@ public class MySQLConnection
 {
     private static final String HOST = "localhost";
     private static final int PORT = 3306;
-    private static final String DB = "tweetpeople";
+    private static final String DB = "missingtweets";
     private static final String USER = "root";
     private static final String PW = "root";
     private static final String URL = String.format("jdbc:mysql://%s:%d/%s",
